@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sim ou não</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #fff0f5;
+      overflow: hidden;
+    }
+    #questionContainer {
+      margin-top: 80px;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    .buttons {
+      margin-top: 50px;
+      position: relative;
+      height: 300px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 20px;
+      transition: 0.3s ease;
+      position: absolute;
+    }
+    #yes {
+      background-color: #4CAF50;
+      color: white;
+      position: static;
+    }
+    #no {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #heartLoader {
+      display: none;
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    #resultContainer {
+      display: none;
+      margin-top: 30px;
+    }
+
+    #gifResult {
+      width: 200px;
+      height: auto;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="questionContainer">
+    <h1>Você aceita continuar namorando comigo ? ❤️</h1>
+    <div class="buttons">
+      <button id="yes">Sim</button>
+      <button id="no">Não</button>
+    </div>
+  </div>
+
+  <div id="heartLoader">❤️ Carregando amor...</div>
+  
+
+  <div id="resultContainer">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWxmYzkweHE3a3A0ZDVueGl6eXIzbGowOWE5aTVyc2VoczZrbW5jbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qfQgXxBz1nvWEbOxyb/giphy.gif" alt="hug result gif">
+    <div id="resultText">Sabia que você diria sim! 💕 😍!</div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const questionContainer = document.getElementById("questionContainer");
+    const heartLoader = document.getElementById("heartLoader");
+    const resultContainer = document.getElementById("resultContainer");
+    const gifResult = document.getElementById("gifResult");
+
+    noBtn.addEventListener("mouseover", () => {
+      const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
+      const newY = Math.floor(Math.random() * questionContainer.offsetHeight);
+      noBtn.style.left = `${newX}px`;
+      noBtn.style.top = `${newY}px`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      heartLoader.style.display = "block";
+      questionContainer.style.display = "none";
+
+      setTimeout(() => {
+        heartLoader.style.display = "none";
+        resultContainer.style.display = "block";
+        gifResult.play();
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
